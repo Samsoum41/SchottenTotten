@@ -1,0 +1,66 @@
+# depslib dependency file v1.0
+1584657426 source:c:\users\hocin\documents\cours\ecn\algpr\ta\schottentotten\main.cpp
+	"structures.h"
+	"fonctions.h"
+
+1584657426 .h"
+
+1584655854 c:\users\hocin\documents\cours\ecn\algpr\ta\schottentotten\structures.h
+	<string>
+	<iostream>
+	<cstddef>
+
+1584657349 
+
+1584656630 c:\users\hocin\documents\cours\ecn\algpr\ta\schottentotten\fonctions.h
+
+1584654765 source:c:\users\hocin\documents\cours\ecn\algpr\ta\schottentotten\affichage.cpp
+	"structures.h"
+
+1584654765 s.h"
+
+1584657349 source:c:\users\hocin\documents\cours\ecn\algpr\ta\schottentotten\cartes.cpp
+	"structures.h"
+	<cstdlib>
+	<cmath>
+
+1585022934 source:/media/samy/ESD-ISO/ALGO/SchottenTotten/affichage.cpp
+	"structures.h"
+
+1584663056 /media/samy/ESD-ISO/ALGO/SchottenTotten/structures.h
+	<string>
+	<iostream>
+	<cstddef>
+
+1586108542 source:/media/samy/ESD-ISO/ALGO/SchottenTotten/cartes.cpp
+	"structures.h"
+	<cstdlib>
+	<cmath>
+
+1586108510 source:/media/samy/ESD-ISO/ALGO/SchottenTotten/main.cpp
+	"structures.h"
+	"fonctions.h"
+	<time.h>
+
+1584663832 /media/samy/ESD-ISO/ALGO/SchottenTotten/fonctions.h
+
+1585022934 source:/home/samy/Bureau/SchottenTotten/affichage.cpp
+	"structures.h"
+
+1584663056 /home/samy/Bureau/SchottenTotten/structures.h
+	<string>
+	<iostream>
+	<cstddef>
+
+1586386089 source:/home/samy/Bureau/SchottenTotten/cartes.cpp
+	"structures.h"
+	<cstdlib>
+	<cmath>
+
+1586386089 source:/home/samy/Bureau/SchottenTotten/main.cpp
+	"structures.h"
+	"fonctions.h"
+	<time.h>
+
+1584663832 /home/samy/Bureau/SchottenTotten/fonctions.h
+
