@@ -64,3 +64,11 @@
 
 1584663832 /home/samy/Bureau/SchottenTotten/fonctions.h
 
+1586820369 source:c:\users\hocin\documents\codes\schottentotten\affichage.cpp
+	"structures.h"
+
+1586824124 c:\users\hocin\documents\codes\schottentotten\structures.h
+	<string>
+	<iostream>
+	<cstddef>
+

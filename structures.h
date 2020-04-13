@@ -28,8 +28,19 @@ struct Chaine
     Chaine* suivant=NULL;
 };
 
+
+
 typedef int Liste[nbTotalCartes];
 typedef Carte VectCartes[tailleMain];
 typedef Carte TabCartes[tailleColonne][tailleColonne];
 
+// Variables globales du programme:
 
+VectCartes mainJ1, mainJ2;
+TabCartes terrain;
+Chaine pile;
+std::string nomJ1, nomJ2;
+int fini{0};
+int bornesJ1[5]; // 5 est le nombre maximal de bornes qu'un joueur peut avoir,
+int bornesJ2[5]; // au bout de 5 bornes on gagne, quoiqu'il arrive.
+int joueurDerniereCarte[9]; // On considère un tableau de taille 9 contenant le numéro du dernier joueur à avoir posé une carte dans la borne i

@@ -13,8 +13,10 @@ void init(TabCartes terrain);
 void afficherCarte(Carte carte);
 void afficherTerrain(TabCartes terrain);
 void afficherMain(VectCartes main);
+void sautDeLignes(int nbLignes);
 
 
 // Ensuite celles de 'cartes.cpp'
 Chaine creerPile();
 void piocheMain(VectCartes &main,Chaine &pile);
+void pioche(VectCartes &main, Chaine &pile);

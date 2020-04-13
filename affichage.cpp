@@ -10,6 +10,8 @@ Description: Ce fichier sert à implémenter l'ensemble des fonctions qui intervie
 
 #include "structures.h"
 
+using namespace std;
+
 void init(TabCartes terrain)
 {
     for (int i=0 ; i<tailleColonne;i++)
@@ -88,4 +90,12 @@ void afficherMain(VectCartes main)
         std::cout << "|" ;
     }
     std::cout << std::endl;
+}
+
+void sautDeLignes(int nbLignes)
+{
+    for (int i=0;i<nbLignes;i++)
+    {
+        cout << endl;
+    }
 }

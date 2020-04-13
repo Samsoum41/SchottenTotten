@@ -13,32 +13,80 @@ Description du projet: Ce programme sert à implémenter le jeu de cartes Schotten
 #include "fonctions.h"
 #include <time.h>
 
-// Variables globales du programme:
-VectCartes mainJ1, mainJ2;
-TabCartes terrain;
-Chaine pile;
-
+// Les variables globales du programme sont définies dans structures.h.
 
 using namespace std;
 
 int main()
 {
-
+    string temp;
+    int numBorne;
     srand(time(NULL));
     init(terrain);
+
     afficherTerrain(terrain);
     pile=creerPile();
-
     piocheMain(mainJ1,pile);
-    std::cout << "REGARDEZ PAR LA " << std::endl;
-
     piocheMain(mainJ2,pile);
-    std::cout << "La main du joueur 1 : ";
-    afficherMain(mainJ1);
-    std::cout << std::endl;
-    std::cout << "La main du joueur 2 : ";
-    afficherMain(mainJ2);
-    std::cout << std::endl;
 
+    cout << "Quel est le nom du joueur 1 ?" << endl;
+    cin >> nomJ1;
+    cout << "La main de " << nomJ1 << "est  : ";
+    afficherMain(mainJ1);
+    cin >> temp;
+    sautDeLignes(10);
+
+    cout << "Et quel est le nom du joueur 2 ?" << endl;
+    cin >> nomJ2;
+    cout << "La main de " << nomJ2 << "est  : ";
+    afficherMain(mainJ2);
+    cin >> temp;
+    sautDeLignes(10);
+
+    while (fini==0)
+    {
+        // Tour J1
+        cout << "C'est votre tour, " << nomJ1 << " !" << endl;
+        cout << nomJ1 << ", voulez-vous revendiquer revendiquer une borne ? Si oui, laquelle ? Sinon, entrez 0." << endl;
+        cin >> numBorne;
+        if (numBorne > 0)
+        {
+            revendiquer(numBorne,J1);
+        }
+        else
+        {
+            cout << "Vous n'avez pas revendiqué de bornes." << endl;
+        }
+        placerCarteClan(1);
+        pioche(mainJ1, pile);
+
+        if (fini==0)
+        {
+            sautDeLignes(10);
+            cout << "Ce sera au tour de " << nomJ2 << " de jouer son tour, pressez entrée lorsque " << nomJ2 << " sera prêt(e)." << endl;
+            cin >> temp;
+
+
+
+            // Tour J2
+            cout << "C'est votre tour, " << nomJ2 << " !" << endl;
+            cout << nomJ2 << ", voulez-vous revendiquer revendiquer une borne ? Si oui, laquelle ? Sinon, entrez 0." << endl;
+            cin >> numBorne;
+            if (numBorne > 0)
+            {
+                revendiquer(numBorne,J2);
+            }
+            else
+            {
+                cout << "Vous n'avez pas revendiqué de bornes." << endl;
+            }
+            placerCarteClan(2);
+            pioche(mainJ2, pile)
+            sautDeLignes(10);
+            cout << "Ce sera au tour de " << nomJ1 << " de jouer son tour, pressez entrée lorsque " << nomJ1 << " sera prêt(e)." << endl;
+            cin << temp;
+        }
+    }
+    afficherGagnant(fini)
     return 0;
 }
