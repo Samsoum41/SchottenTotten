@@ -35,12 +35,15 @@
 		<Unit filename="affichage.cpp" />
 		<Unit filename="cartes.cpp" />
 		<Unit filename="fonctions.h" />
+		<Unit filename="g_variables.cpp" />
+		<Unit filename="g_variables.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="structures.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />
 			<debugger />
+			<lib_finder disable_auto="1" />
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>

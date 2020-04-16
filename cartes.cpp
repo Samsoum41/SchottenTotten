@@ -11,6 +11,7 @@ Description: Ce fichier sert à implémenter l'ensemble des fonctions qui intervie
 #include "structures.h"
 #include <cstdlib>
 #include <cmath>
+#include "g_variables.h"
 
 using namespace std;
 
@@ -115,7 +116,7 @@ bool testBorneRemplie(int numBorne, int numJoueur)
     {
         for (int i=1;i<4;i++)
         {
-            if (terrain[numBorne][i].valeur==0)
+            if (game::terrain[numBorne][i].valeur==0)
             {
                 return false;
             }
@@ -125,7 +126,7 @@ bool testBorneRemplie(int numBorne, int numJoueur)
     {
         for (int i=5;i<8;i++)
         {
-            if (terrain[numBorne][i].valeur==0)
+            if (game::terrain[numBorne][i].valeur==0)
             {
                 return false;
             }
@@ -138,37 +139,47 @@ bool testBorneRemplie(int numBorne, int numJoueur)
     return true;
 }
 
-bool testFinie(int numBorne, int numJoueur)
-{
-
-}
-
 int distanceMod13(int a, int b)
 {
     return (abs((a-b)%13));
 }
 
-bool estUneSuite(int* cartes)
+bool estUneSuiteVect(vector<int> bornesJoueur)
+{
+    int taille{bornesJoueur.size()};
+    bool res{false};
+    for (int i=0;i<taille;i++)
+    {
+        for (int j=i;j<taille;j++)
+        {
+            if (distanceMod13(bornesJoueur[i],bornesJoueur[j])>=taille)
+                return false;
+        }
+    }
+    return true;
+}
+
+bool estUneSuite(Carte* cartes)
 {
     return (distanceMod13(cartes[0].valeur,cartes[1].valeur)<3 && distanceMod13(cartes[1].valeur,cartes[2].valeur)<3 && distanceMod13(cartes[0].valeur,cartes[2].valeur)<3);
 }
 
-bool estUneCouleur(int* cartes)
+bool estUneCouleur(Carte* cartes)
 {
     return (cartes[0].couleur==cartes[1].couleur && cartes[1].couleur==cartes[2].couleur);
 }
 
-bool estUneSuiteCouleur(int* cartes)
+bool estUneSuiteCouleur(Carte* cartes)
 {
     return (estUneSuite(cartes) && estUneCouleur(cartes));
 }
 
-bool estUnBrelan(int* cartes)
+bool estUnBrelan(Carte* cartes)
 {
     return (cartes[0].valeur==cartes[1].valeur && cartes[1].valeur==cartes[2].valeur);
 }
 
-int calculScore(int* cartes)
+int calculScore(Carte* cartes)
 {
     if (estUneSuiteCouleur(cartes))
     {
@@ -188,18 +199,30 @@ int calculScore(int* cartes)
     }
 }
 
+int maxCartes(VectCartes cartes)
+{
+    int maxi{0};
+    for (int i=0;i<tailleMain;i++)
+    {
+        if (maxi<cartes[i].valeur)
+            maxi = cartes[i].valeur;
+    }
+    return maxi;
+}
+
+
 int testCombinaisons1(int borne, int numJoueur)
 {
     int scoreJ1{0}, scoreJ2{0};
-    int cartesBorneJ1[3];
-    int cartesBornesJ2 [3];
+    Carte cartesBorneJ1[3];
+    Carte cartesBorneJ2 [3];
     for (int i=0;i<3;i++)
     {
-        carteBorneJ1[i]=terrain[borne][1+i];
-        carteBorneJ2[i]=terrain[borne][5+i];
+        cartesBorneJ1[i]=game::terrain[borne][1+i];
+        cartesBorneJ2[i]=game::terrain[borne][5+i];
     }
-    scoreJ1=calculScore(carteBorneJ1);
-    scoreJ2=calculScore(carteBorneJ2);
+    scoreJ1=calculScore(cartesBorneJ1);
+    scoreJ2=calculScore(cartesBorneJ2);
     if (scoreJ1>scoreJ2)
     {
         return 1;
@@ -211,8 +234,8 @@ int testCombinaisons1(int borne, int numJoueur)
     else
     {
         int max1{0}, max2{0};
-        max1=maxCartes(mainJ1)
-        max2=maxCartes(mainJ2)
+        max1=maxCartes(game::mainJ1);
+        max2=maxCartes(game::mainJ2);
         if (max1<max2)
         {
             return 2;
@@ -223,12 +246,22 @@ int testCombinaisons1(int borne, int numJoueur)
         }
         else
         {
-            return ((joueurDerniereCarte(borne)+1)%2);
+            return ((game::joueurDerniereCarte[borne]+1)%2);
         }
     }
 }
 
-int testCombinaisons2(int borne)
+bool testFinie(int numJoueur)
+{
+    if (numJoueur==1 && (game::bornesJ1.size()>=5 || estUneSuiteVect(game::bornesJ1)))
+        return true;
+    else if (numJoueur==2 && (game::bornesJ2.size()>=5 || estUneSuiteVect(game::bornesJ2)))
+        return true;
+    else
+        return false;
+}
+
+bool testCombinaisons2(int numBorne)
 {
 
 }
@@ -240,31 +273,29 @@ void revendiquer (int numBorne, int numJoueur)
         int numJGagnant{-2};
         numJGagnant=testCombinaisons1(numBorne, numJoueur);
         if (numJGagnant==1)
-        {
-            cout << nomJ1 << " a gagné la borne " << numBorne << " !" << endl;
-        }
+            cout << game::nomJ1 << " a gagné la borne " << numBorne << " !" << endl;
         else if (numJGagnant==2)
-        {
-            cout << nomJ2 << " a gagné la borne " << numBorne << " !" << endl;
-        }
+            cout << game::nomJ2 << " a gagné la borne " << numBorne << " !" << endl;
         else
-        {
             cout << "Y a une erreur dans la revendiquation de la borne." << endl;
-            return;
-        }
         //A la fin, on vérifie que le joueur qui a acquis la borne n'a pas gagné la partie
-        testFinie(numJGagnant)
+        testFinie(numJGagnant);
     }
     else
     {
         if (testCombinaisons2(numBorne))
         {
             cout << "Le joueur " << numJoueur << " a pris la borne " << numBorne << " !" << endl;
-            testFinie(numJoueur)
+            testFinie(numJoueur);
         }
         else
         {
             cout << "Aucun joueur n'a pris la borne " << numBorne << "." << endl;
         }
     }
+}
+
+void placerCarteClan(int joueur)
+{
+
 }

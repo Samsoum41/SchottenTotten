@@ -1,74 +1,55 @@
 # depslib dependency file v1.0
-1584657426 source:c:\users\hocin\documents\cours\ecn\algpr\ta\schottentotten\main.cpp
+1586913312 source:c:\users\hocin\documents\codes\schottencopy\schottentotten\affichage.cpp
 	"structures.h"
-	"fonctions.h"
 
-1584657426 .h"
-
-1584655854 c:\users\hocin\documents\cours\ecn\algpr\ta\schottentotten\structures.h
+1586913357 c:\users\hocin\documents\codes\schottencopy\schottentotten\structures.h
 	<string>
 	<iostream>
 	<cstddef>
+	<vector>
 
-1584657349 
-
-1584656630 c:\users\hocin\documents\cours\ecn\algpr\ta\schottentotten\fonctions.h
-
-1584654765 source:c:\users\hocin\documents\cours\ecn\algpr\ta\schottentotten\affichage.cpp
-	"structures.h"
-
-1584654765 s.h"
-
-1584657349 source:c:\users\hocin\documents\cours\ecn\algpr\ta\schottentotten\cartes.cpp
+1586913616 source:c:\users\hocin\documents\codes\schottencopy\schottentotten\cartes.cpp
 	"structures.h"
 	<cstdlib>
 	<cmath>
 
-1585022934 source:/media/samy/ESD-ISO/ALGO/SchottenTotten/affichage.cpp
-	"structures.h"
-
-1584663056 /media/samy/ESD-ISO/ALGO/SchottenTotten/structures.h
-	<string>
-	<iostream>
-	<cstddef>
-
-1586108542 source:/media/samy/ESD-ISO/ALGO/SchottenTotten/cartes.cpp
-	"structures.h"
-	<cstdlib>
-	<cmath>
-
-1586108510 source:/media/samy/ESD-ISO/ALGO/SchottenTotten/main.cpp
+1586913526 source:c:\users\hocin\documents\codes\schottencopy\schottentotten\main.cpp
 	"structures.h"
 	"fonctions.h"
 	<time.h>
 
-1584663832 /media/samy/ESD-ISO/ALGO/SchottenTotten/fonctions.h
-
-1585022934 source:/home/samy/Bureau/SchottenTotten/affichage.cpp
+1586913526 c:\users\hocin\documents\codes\schottencopy\schottentotten\fonctions.h
 	"structures.h"
 
-1584663056 /home/samy/Bureau/SchottenTotten/structures.h
+1587001355 source:c:\users\hocin\documents\codes\schottentotten\affichage.cpp
+	"structures.h"
+
+1587001396 c:\users\hocin\documents\codes\schottentotten\structures.h
 	<string>
 	<iostream>
 	<cstddef>
+	<vector>
 
-1586386089 source:/home/samy/Bureau/SchottenTotten/cartes.cpp
+1587001280 source:c:\users\hocin\documents\codes\schottentotten\cartes.cpp
 	"structures.h"
 	<cstdlib>
 	<cmath>
+	"g_variables.h"
 
-1586386089 source:/home/samy/Bureau/SchottenTotten/main.cpp
+1587000306 source:c:\users\hocin\documents\codes\schottentotten\main.cpp
 	"structures.h"
 	"fonctions.h"
+	"g_variables.h"
 	<time.h>
 
-1584663832 /home/samy/Bureau/SchottenTotten/fonctions.h
-
-1586820369 source:c:\users\hocin\documents\codes\schottentotten\affichage.cpp
+1587001310 c:\users\hocin\documents\codes\schottentotten\fonctions.h
 	"structures.h"
 
-1586824124 c:\users\hocin\documents\codes\schottentotten\structures.h
-	<string>
-	<iostream>
-	<cstddef>
+1587001396 c:\users\hocin\documents\codes\schottentotten\g_variables.h
+	"structures.h"
+	"fonctions.h"
+
+1587001012 source:c:\users\hocin\documents\codes\schottentotten\g_variables.cpp
+	"structures.h"
+	"fonctions.h"
 

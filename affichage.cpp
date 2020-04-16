@@ -12,7 +12,7 @@ Description: Ce fichier sert à implémenter l'ensemble des fonctions qui intervie
 
 using namespace std;
 
-void init(TabCartes terrain)
+void init(TabCartes &terrain)
 {
     for (int i=0 ; i<tailleColonne;i++)
     {
@@ -99,3 +99,9 @@ void sautDeLignes(int nbLignes)
         cout << endl;
     }
 }
+
+void afficherGagnant(int numJGagnant)
+{
+
+}
+
