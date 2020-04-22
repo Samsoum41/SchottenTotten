@@ -1,0 +1,8 @@
+﻿  affichage.cpp
+  cartes.cpp
+C:\Users\hocin\Documents\Codes\SchottenTotten\cartes.cpp(79,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\hocin\Documents\Codes\SchottenTotten\cartes.cpp(88,25): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\hocin\Documents\Codes\SchottenTotten\cartes.cpp(89,25): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  main.cpp
+  Generating Code...
+  SchottenTotten.vcxproj -> C:\Users\hocin\Documents\Codes\SchottenTotten\Debug\SchottenTotten.exe

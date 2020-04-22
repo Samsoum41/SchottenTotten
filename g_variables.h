@@ -4,7 +4,7 @@ Nom du projet: SchottenTotten
 Auteur: Samy Hocine
 Date de création: 16/04/2020
 
-Description: Ce fichier sert à stocker les variables globales du jeu dans un namespace.
+Description: Ce fichier sert à 'annoncer' les variables globales du jeu dans un namespace.
 */
 
 #pragma once
@@ -23,5 +23,7 @@ namespace game
     extern std::vector<int> bornesJ1; // 5 est le nombre maximal de bornes qu'un joueur peut avoir,
     extern std::vector<int> bornesJ2; // au bout de 5 bornes on gagne, quoiqu'il arrive.
     extern int joueurDerniereCarte[9]; // On considère un tableau de taille 9 contenant le numéro du dernier joueur à avoir posé une carte dans la borne i
+    int min(int* listeNombres, int taille);
+
 }
 

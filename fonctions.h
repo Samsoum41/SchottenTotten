@@ -4,7 +4,7 @@ Nom du projet: SchottenTotten
 Auteur: Samy Hocine
 Date de création: 19/03/2020
 
-Description: Ce fichier sert à stocker les prototypes du fichier fonctions.cpp.
+Description: Ce fichier sert à stocker les prototypes des différentes fonctions du jeu.
 */
 
 #pragma once
@@ -17,14 +17,16 @@ void afficherTerrain(TabCartes terrain);
 void afficherMain(VectCartes main);
 void sautDeLignes(int nbLignes);
 void afficherGagnant(int numJGagnant);
-
+void placerCarteClan(int joueur);
+void afficherGagnant(int numJGagnant);
+void changeJoueur();
+void bloquer();
+void afficherPile();
 
 // Ensuite celles de 'cartes.cpp'
 Chaine creerPile();
 void piocheMain(VectCartes &main,Chaine &pile);
 void pioche(VectCartes &main, Chaine &pile);
-bool testFinie(int numJoueur);
-int testCombinaisons1(int borne, int numJoueur);
 int maxCartes(VectCartes cartes);
 int calculScore(Carte* cartes);
 bool estUnBrelan(Carte* cartes);
@@ -35,5 +37,12 @@ bool estUneSuiteVect(std::vector<int> bornesJoueur);
 int distanceMod13(int a, int b);
 bool testBorneRemplie(int numBorne, int numJoueur);
 void revendiquer (int numBorne, int numJoueur);
-void placerCarteClan(int joueur);
-
+void retirerCarteMain(int numCarte, int numJoueur);
+void prendreBorne(int numBorne, int numJoueur);
+bool testCombinaisons2(int numBorne, int numJoueur, Carte* tasSurBorneJ1, Carte* tasSurBorneJ2);
+void ajouterCarte(Carte* tasSurBorne, Carte carte);
+void testFinie(int numJoueur);
+bool testCombinaisons1(int borne, int numJoueur, Carte* tasSurBorneJ1, Carte* tasSurBorneJ2);
+void tasBorne(int numBorne, int numJoueur, Carte* tasSurBorne);
+bool testPile();
+void parcourirPile();
