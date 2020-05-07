@@ -15,6 +15,7 @@ Description: Ce fichier sert à construire l'ensemble des structures de données q
 const int tailleMain(6);
 const int tailleColonne(9);
 const int nbTotalCartes(52);
+const int nbBornes{ 9 };
 const int tailleSautLigne(30);
 
 struct Carte

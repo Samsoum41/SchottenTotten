@@ -22,6 +22,9 @@ void afficherGagnant(int numJGagnant);
 void changeJoueur();
 void bloquer();
 void afficherPile();
+int getIntLim(int max);
+int getInt();
+
 
 // Ensuite celles de 'cartes.cpp'
 Chaine creerPile();
@@ -45,4 +48,3 @@ void testFinie(int numJoueur);
 bool testCombinaisons1(int borne, int numJoueur, Carte* tasSurBorneJ1, Carte* tasSurBorneJ2);
 void tasBorne(int numBorne, int numJoueur, Carte* tasSurBorne);
 bool testPile();
-void parcourirPile();

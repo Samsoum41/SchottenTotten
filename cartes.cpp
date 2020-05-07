@@ -13,6 +13,7 @@ Description: Ce fichier sert à implémenter l'ensemble des fonctions qui intervie
 #include <cmath>
 #include "g_variables.h"
 #include <time.h>
+#include "fonctions.h"
 
 using namespace std;
 
@@ -26,7 +27,7 @@ void permut(Liste &liste,int nb1,int nb2)
 
 /*
 Cette fonction est appelée dans la fonction creerPile. Elle servira à associé à un nombre compris entre 0 et 3 une couleur.
-*/0
+*/
 std::string couleur(int numeroCouleur)
 {
     switch (numeroCouleur)
@@ -94,13 +95,18 @@ Chaine creerPile()
         rand2=std::floor(std::rand()%52);
         permut(liste,rand1,rand2);
     }
-    for (int i=0;i<52;i++)
+    //On traite le premier maillon de la chaîne séparément.
+    pile.carte.valeur = liste[0] / 4 + 10;
+    pile.carte.couleur = couleur(liste[0] % 4);
+    for (int i=1;i<52;i++)
     {
         Carte carte;
         carte.valeur=liste[i]/4 +1;
         carte.couleur=couleur(liste[i]%4);
         push(carte,pile);
     }
+    std::cout << "La pile est creee !";
+    sautDeLignes(2);
     return pile;
 }
 
@@ -322,7 +328,6 @@ void testFinie(int numJoueur)
         game::fini=1;
     else if (numJoueur==2 && (game::bornesJ2.size()>=5 || estUneSuiteVect(game::bornesJ2)))
         game::fini=2;
-    cout << "A la fin de testFini, fini vaut " << game::fini << endl;
 }
 
 void ajouterCarte(Carte* tasSurBorne, Carte carte)
@@ -426,8 +431,6 @@ bool testCombinaisons2(int numBorne, int numJoueur, Carte* tasSurBorneJ1, Carte*
             }
             else if (!estUneNouvelleCarte(tasCourant_2_J1, game::mainJ1[i]) && !estUneNouvelleCarte(tasCourantJ1, game::mainJ1[i]) && !estUneNouvelleCarte(tasCourant_2_J2, game::mainJ2[i]) && !estUneNouvelleCarte(tasCourantJ2, game::mainJ1[i]))
                 cout << "Pas de nouvelles cartes dans à prendre dans une main ce tour-ci ! #testCombinaisons2" << endl;
-            else
-                //cout << "Il y a un probleme dans testCombinaisons2 !!!" << endl;
         }
         // Enfin on parcourt la pile de cartes non distribuées à l'aide d'un nouveau pointeur
         Chaine *current{&game::pile};
@@ -596,4 +599,3 @@ bool testPile()
     }
     return true;
 }
-

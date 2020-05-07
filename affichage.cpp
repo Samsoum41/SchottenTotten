@@ -38,6 +38,10 @@ void init(TabCartes &terrain)
     std::cout << "- la couleur 'coeur' sera représentee par : <3" << std::endl;
     std::cout << "- la couleur 'trefle' sera représentee par : Tr" << std::endl;
     std::cout << "- la couleur 'carreau' sera représentee par : <>" << std::endl;
+    cout << endl;
+    std::cout << "Tu vas jouer qu'en solo contre toi-meme pour l'instant. Pourquoi ? " << std::endl;
+    std::cout << "Parce que le seul qui puisse te battre, c'est toi." << std::endl;
+    cout << endl;
     std::cout << "La partie commence !" << std::endl;
 }
 
@@ -94,12 +98,20 @@ Cette fonction sera appelée à chaque tour pour montrer à chaque joueur le conten
 */
 void afficherMain(VectCartes main)
 {
+    sautDeLignes(2);
+    std::cout << "Indice de la carte :";
+    for (int i = 0; i < tailleMain; i++)
+        std::cout << "   " << i << "   |";
+    sautDeLignes(1);
+    std::cout << "_______________________________________________________________________";
+    sautDeLignes(2);
+    std::cout << "Carte              :";
     for (int i=0;i<tailleMain;i++)
     {
         afficherCarte(main[i]);
         std::cout << "|" ;
     }
-    std::cout << std::endl;
+    sautDeLignes(2);
 }
 
 void sautDeLignes(int nbLignes)
@@ -129,7 +141,9 @@ void placerCarteClan(int joueur)
             cout << game::nomJ1 << ", veuillez choisir une borne ou poser une carte clan : ";
         else if (joueur ==2)
             cout <<  game::nomJ2 << ", veuillez choisir une borne ou poser une carte clan : ";
-        cin >> numBorne;
+        
+        numBorne = getIntLim(nbBornes);  
+
         if ((game::terrain[numBorne][1].valeur!=0 && joueur==1) || (game::terrain[numBorne][7].valeur!=0 && joueur==2) )
             cout << "Vous avez choisi une borne deja remplie, vous ne pouvez pas pose de carte clan dessus." << endl;
         else
@@ -137,7 +151,7 @@ void placerCarteClan(int joueur)
 
     }
     cout << "\n Veuillez choisir le numero de la carte que vous voulez y placer : ";
-    cin >> numCarte;
+    numCarte = getIntLim(tailleMain);
     if (joueur ==1)
     {
         if (game::terrain[numBorne][3].valeur==0)
@@ -189,8 +203,9 @@ Cette fonction est appelé lorsque l'on veut demander aux joueurs d'échanger leur
 void changeJoueur()
 {
     char temp;
-    cout << "Vous devez echanger votre place avec l'autre joueur. Une fois l'echange fait, entrez 'o' :" ;
-    cin >> temp;
+    cout << "Vous devez echanger votre place avec l'autre joueur. Une fois l'echange fait, entrez un caractere ou un nombre :" ;
+    std::cin >> temp;
+    std::cin.ignore(32767, '\n');
     cout << endl;
 }
 
@@ -200,8 +215,9 @@ Cette fonction intervient à chaque fois que l'on souhaite marquer un temps d'arr
 void bloquer()
 {
     char temp;
-    cout << "Pour continuer, entrez 'o' :" ;
-    cin >> temp;
+    cout << "Pour continuer, entrez un caractere ou un nombre :" ;
+    std::cin >> temp;
+    std::cin.ignore(32767, '\n');
     cout << endl;
 }
 
@@ -215,5 +231,46 @@ void afficherPile()
     {
         cout << (ptr -> carte).valeur << (ptr -> carte).couleur << endl;
         ptr=ptr -> suivant;
+    }
+}
+
+
+/*
+Cette fonction s'occupe de réaliser les vérifications nécessaires à l'entrée d'un entier par l'utilisateur.
+*/
+int getInt()
+{
+    while (true)
+    {
+        int i{ 0 };
+        std::cin >> i;
+        //On vérifie que l'utilisateur n'est pas mis en échec l'opérateur cin en entrant un caractère non convertible en entier, auquel cas on le repasse en mode normal.
+        if (std::cin.fail())
+        {
+            std::cin.clear();
+            std::cin.ignore(32767, '\n');
+            std::cout << "Vous n'avez pas entrez un entier, veuillez recommencer : ";
+        }
+        else
+        {
+            //Si l'utilisateur a entré du contenu en plus d'un entier, on vide le buffer pour les prochaines fois:
+            std::cin.ignore(32767, '\n');
+            return i;
+        }
+    }
+}
+
+/*
+Cette fonction là ajoute des vérifications supplémentaires dans le cas où l'entier que l'on veut demander correspond à un numéro de carte ou une borne par exemple.
+ */
+int getIntLim(int max)
+{
+    while (true)
+    {
+        int i{ getInt() };
+        if (i < max && i >= 0)
+            return i;
+        else
+            std::cout << "Vous n'avez pas entré un entier entre 0 et " << max-1 << ", veuillez recommencer :";
     }
 }

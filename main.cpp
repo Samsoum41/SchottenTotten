@@ -23,8 +23,9 @@ int main()
     int numBorne;
     init(game::terrain);
     afficherTerrain(game::terrain);
+    afficherPile();
     piocheMain(game::mainJ1,game::pile);
-    piocheMain(game::mainJ2,game::pile);
+    piocheMain(game::mainJ2,game::pile); 
     cout << "Quel est le nom du joueur 1 ?" << endl;
     cin >> game::nomJ1;
     cout << "La main de " << game::nomJ1 << " est  : ";
@@ -45,17 +46,20 @@ int main()
         afficherTerrain(game::terrain);
         cout << "Voici votre main : "<< endl;
         afficherMain(game::mainJ1);
-        cout << game::nomJ1 << ", voulez-vous revendiquer une borne ? Si oui, laquelle ? Sinon, entrez 9 : ";
-        cin >> numBorne;
-        sautDeLignes(1);
-        if (numBorne <9) // 9 représente le nombre de bornes - 1.
+        cout << game::nomJ1 << ", voulez-vous revendiquer une borne ? Entrez 1 si vous le souhaitez. Sinon, entrez un autre nombre : ";
+        if (getInt() == 1)
         {
-            revendiquer(numBorne,1);
+            std::cout << "Quelle borne voulez vous revendiquer ? Entrez son numero : ";
+            numBorne = getIntLim(nbBornes);
+            sautDeLignes(1);
+            revendiquer(numBorne, 1);
+
         }
+
         else
-        {
-            cout << "Vous n'avez pas revendique de bornes." << endl;
-        }
+            std::cout << "Vous n'avez pas revendique de bornes." << std::endl;
+
+        sautDeLignes(1);
         placerCarteClan(1);
         pioche(game::mainJ1, game::pile);
         cout << "Voici votre main apres pioche :" << endl;
@@ -72,16 +76,19 @@ int main()
             afficherTerrain(game::terrain);
             cout << "Voici votre main :" << endl;
             afficherMain(game::mainJ2);
-            cout << game::nomJ2 << ", voulez-vous revendiquer une borne ? Si oui, laquelle ? Sinon, entrez 9." << endl;
-            cin >> numBorne;
-            if (numBorne <9)
+            cout << game::nomJ2 << ", voulez-vous revendiquer une borne ? Entrez 1 si vous le souhaitez. Sinon, entrez un autre nombre : ";
+            if (getInt() == 1)
             {
-                revendiquer(numBorne,2);
+                std::cout << "Quelle borne voulez vous revendiquer ? Entrez son numero : ";
+                numBorne = getIntLim(nbBornes);
+                sautDeLignes(1);
+                revendiquer(numBorne, 2);
+
             }
+
             else
-            {
-                cout << "Vous n'avez pas revendique de bornes." << endl;
-            }
+                std::cout << "Vous n'avez pas revendique de bornes." << std::endl;
+            sautDeLignes(1);
             placerCarteClan(2);
             pioche(game::mainJ2, game::pile);
             cout << "Voici votre main apres pioche :" << endl;
@@ -94,3 +101,5 @@ int main()
     afficherGagnant(game::fini);
     return 0;
 }
+
+
